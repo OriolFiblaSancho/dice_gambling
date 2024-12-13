@@ -64,7 +64,7 @@
             }
 
             .throw{
-                margin-top: 80px;
+                margin-top: 10px;
 
                 button{
                     padding: 10px 20px;
@@ -96,7 +96,7 @@
             margin: 20px;
             
             image-rendering: pixelated;
-            background: url('img/die.png') no-repeat;
+            background: url('die.png') no-repeat;
             background-size: 1800px 300px;
 
             border: none;
@@ -111,46 +111,57 @@
         }
 
         .color_picker{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
             position: absolute;
             bottom: 40px;
 
             h1{
-                font-size: 20px;
-                font-weight: 600;
-                color: #333;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
             }
 
             input{
-                height: 33px;
-                padding: 5px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
+            height: 33px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             }
 
             button{
-                width: 20px;
-                height: 20px;
-                border: none;
-                border-radius: 50%;
-                margin: 0 5px;
-                cursor: pointer;
+            width: 20px;
+            height: 20px;
+            border: none;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
             }
 
             #red{
-                background-color: #ff0000;
+            background-color: #ff0000;
             }
 
             #blue{
-                background-color: #002fff;
+            background-color: #002fff;
             }
 
             #green{
-                background-color: #0ed100;
+            background-color: #0ed100;
             }
 
             #orange{
-                background-color: #ff9100;
+            background-color: #ff9100;
+            }
+
+            #default{
+            background-color: white;
+            border: black 1px solid;
             }
         }
 
@@ -182,7 +193,7 @@
 
     <div class="color_picker">
         
-        <h1>Dice color: <button id="red"></button><button id="blue"></button><button id="green"></button><button id="orange"></button></h1>
+        <h1>Dice color: <button id="default"></button><button id="red"></button><button id="blue"></button><button id="green"></button><button id="orange"></button></h1>
     </div>
 
     <script>
@@ -191,6 +202,7 @@
         const diceBlue = document.getElementById("blue");
         const diceGreen = document.getElementById("green");
         const diceOrange = document.getElementById("orange");
+        const diceDefault = document.getElementById("default");
 
         const dice1 = document.querySelector('.dice #_1');
         const dice2 = document.querySelector('.dice #_2');
@@ -203,32 +215,38 @@
 
         diceRed.addEventListener("click", () => {
             document.querySelectorAll('.dice button').forEach(button => {
-                button.style.background = "url('img/dice_red.png') no-repeat";
+                button.style.background = "url(dice_red.png) no-repeat";
                 button.style.backgroundSize = "1800px 300px";
             });
         });
 
         diceBlue.addEventListener("click", () => {
             document.querySelectorAll('.dice button').forEach(button => {
-                button.style.background = "url('img/dice_blue.png') no-repeat";
+                button.style.background = "url(dice_blue.png) no-repeat";
                 button.style.backgroundSize = "1800px 300px";
             });
         });
 
         diceGreen.addEventListener("click", () => {
             document.querySelectorAll('.dice button').forEach(button => {
-                button.style.background = "url('img/dice_green.png') no-repeat";
+                button.style.background = "url(dice_green.png) no-repeat";
                 button.style.backgroundSize = "1800px 300px";
             });
         });
 
         diceOrange.addEventListener("click", () => {
             document.querySelectorAll('.dice button').forEach(button => {
-                button.style.background = "url('img/dice_orange.png') no-repeat";
+                button.style.background = "url(dice_orange.png) no-repeat";
                 button.style.backgroundSize = "1800px 300px";
             });
         });
 
+        diceDefault.addEventListener("click", () => {
+            document.querySelectorAll('.dice button').forEach(button => {
+                button.style.background = "url(die.png) no-repeat";
+                button.style.backgroundSize = "1800px 300px";
+            });
+        });
 
         document.querySelector('.result').appendChild(resultInfo);
 
@@ -324,8 +342,3 @@
     </script>
 </body>
 </html>
-
-<!--TO DO-->
-<!--
-     Add more colors
-     -->
