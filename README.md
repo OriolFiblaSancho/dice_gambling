@@ -3,7 +3,7 @@
 Welcome to Dice Gambling, a fun and interactive dice rolling game where you can test your luck against an opponent. Click the button to roll your dice and see if you can beat the opponent's score!
 
 ## How to Play
-Go to itch.io[https://oriol-fibla.itch.io/gambling-with-dices]
+Go to https://oriol-fibla.itch.io/gambling-with-dices
 ## Technologies Used
 
 - HTML
