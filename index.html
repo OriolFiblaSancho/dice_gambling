@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMBLING !!!</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+            font-family: Rubik, sans-serif;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            height: 100vh;
+            background-color: #f1f1f1;
+
+            position: relative;
+        }
+
+        .title{
+            text-align: center;
+            margin-top: 50px;
+
+            h1{
+                font-size: 40px;
+                font-weight: 700;
+                color: #333;
+            }
+
+            h2{
+                font-size: 20px;
+                font-weight: 400;
+                color: #555;
+            }
+        }
+
+        .game{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            position: absolute;
+            top: 20%;
+
+            .result{
+                h1{
+                    font-size: 50px;
+                    font-weight: 700;
+                    color: #333;
+
+                    opacity: 0;
+                }
+            }
+
+            .throw{
+                margin-top: 80px;
+
+                button{
+                    padding: 10px 20px;
+                    font-size: 30px;
+                    font-weight: 600;
+                    color: white;
+                    background-color: #333;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    transition: 0.3s;
+                    &:hover{
+                        background-color: #555;
+                        transform: scale(1.1);
+                    }
+
+                    &:active{
+                        transform: scale(1);
+                    }
+                }
+
+            }
+
+        }
+
+        .dice button{
+            margin: 20px;
+            
+            image-rendering: pixelated;
+            background: url('img/die.png') no-repeat;
+            background-size: 1800px 300px;
+
+            border: none;
+
+            width: 300px;
+            height: 300px;
+        }
+
+        #_1{
+            background-position: 0px;
+        }
+
+        #_2{
+            background-position: -900px;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <div class="title">
+        <h1>Welcome to Dice Gambling</h1>
+        <h2>Click the button below to throw your dice</h2>
+    </div>
+
+    <div class="game">
+        <div class="result">
+            <h1>A</h1>
+        </div>
+
+        <div class="dice">
+            <button id="_1"></button>
+            <button id="_2"></button>
+        </div>
+
+        <div class="throw">
+            <button>Throw Dice</button>
+        </div>
+
+    </div>
+
+    <script>
+        const dice1 = document.querySelector('.dice #_1');
+        const dice2 = document.querySelector('.dice #_2');
+        const throwDice = document.querySelector('.throw button');
+        const result = document.querySelector('.result h1');
+
+        let playerThrow = true;
+
+        throwDice.addEventListener('click', () => {
+            const random1 = Math.floor(Math.random() * 6) + 1;
+            const random2 = Math.floor(Math.random() * 6) + 1;
+
+            //Animation
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const tempRandom1 = Math.floor(Math.random() * 6) + 1;
+                    const tempRandom2 = Math.floor(Math.random() * 6) + 1;
+                    const number1 = `${(tempRandom1 - 1) * -300}px`;
+                    const number2 = `${(tempRandom2 - 1) * -300}px`;
+
+                    dice1.style.backgroundPosition = number1;
+                    dice2.style.backgroundPosition = number2;
+
+                    throwDice.innerHTML = 'Throwing...';
+                },i * 100);
+            }
+
+            //Numero resultat
+            setTimeout(() => {
+                const number1 = `${(random1 - 1) * -300}px`;
+                const number2 = `${(random2 - 1) * -300}px`;
+                dice1.style.backgroundPosition = number1;
+                dice2.style.backgroundPosition = number2;
+                result.style.opacity = 1;
+                result.innerText = random1 + random2;
+                playerThrow = false;
+                if(!playerThrow){
+                    throwDice.innerHTML = 'Next Player';
+                }else{
+                    throwDice.innerHTML = 'Throw Dice';
+                }
+            }, 2000);
+
+            
+
+        });
+
+        
+
+        
+    </script>
+</body>
+</html>
